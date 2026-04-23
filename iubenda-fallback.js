@@ -3,14 +3,19 @@
   "use strict";
 
   window.openIubendaPreferences = function () {
-    if (window._iub && window._iub.cs && typeof window._iub.cs.openPreferences === 'function') {
-      window._iub.cs.openPreferences();
+    var cs = window._iub && window._iub.cs;
+    if (cs && cs.api && typeof cs.api.openPreferences === 'function') {
+      cs.api.openPreferences();
+    } else if (cs && typeof cs.openPreferences === 'function') {
+      cs.openPreferences();
+    } else if (cs && typeof cs.showCP === 'function') {
+      cs.showCP();
     } else {
       var iubendaLink = document.querySelector('.iubenda-cs-preferences-link');
       if (iubendaLink) {
         iubendaLink.click();
       } else {
-        console.warn('Iubenda preferences link not found in the DOM.');
+        console.warn('Iubenda preferences API not available.');
       }
     }
   };
