@@ -17,27 +17,26 @@ consent prompt that auto-removes itself once the visitor accepts — no page rel
 1. Push this repo to GitHub.
 2. In Vercel: **Add New → Project → Import** the repo.
 3. Framework Preset: **Other**. No build command, no output directory.
-4. Deploy. Vercel serves the files at the project root, e.g.:
-   - `https://<your-project>.vercel.app/iubenda-fallback.css`
-   - `https://<your-project>.vercel.app/iubenda-fallback.js`
+4. Deploy. Vercel serves the files at the project root:
+   - `https://cookie-solution-iubenda.vercel.app/iubenda-fallback.css`
+   - `https://cookie-solution-iubenda.vercel.app/iubenda-fallback.js`
 
 Pushes to `main` redeploy automatically.
 
 ## Add to Webflow
 
-Open **Project Settings → Custom Code** and replace `<your-project>` with your
-Vercel domain.
+Open **Project Settings → Custom Code** and paste the snippets below.
 
 ### Head Code
 
 ```html
-<link rel="stylesheet" href="https://<your-project>.vercel.app/iubenda-fallback.css">
+<link rel="stylesheet" href="https://cookie-solution-iubenda.vercel.app/iubenda-fallback.css">
 ```
 
 ### Footer Code
 
 ```html
-<script defer src="https://<your-project>.vercel.app/iubenda-fallback.js"></script>
+<script defer src="https://cookie-solution-iubenda.vercel.app/iubenda-fallback.js"></script>
 ```
 
 Publish the site. The script auto-detects every iframe Iubenda has blocked
@@ -72,8 +71,8 @@ Browsers and Vercel's edge cache static assets aggressively. After a deploy,
 append a query param to bust the cache during testing:
 
 ```html
-<link rel="stylesheet" href="https://<your-project>.vercel.app/iubenda-fallback.css?v=9">
-<script defer src="https://<your-project>.vercel.app/iubenda-fallback.js?v=9"></script>
+<link rel="stylesheet" href="https://cookie-solution-iubenda.vercel.app/iubenda-fallback.css?v=9">
+<script defer src="https://cookie-solution-iubenda.vercel.app/iubenda-fallback.js?v=9"></script>
 ```
 
 Bump the `v` value on every release.
